@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aston Martin | Power. Beauty. Soul.</title>
+    <meta name="description" content="Aston Martin. Pure luxury, pure performance. Explore the definitive collection of handcrafted British supercars.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+</head>
+<body>
+
+    <!-- LOADER — Precision Reveal -->
+    <div class="loader" id="loader">
+
+        <!-- Top-left corner brackets -->
+        <div class="ld-corner ld-corner--tl" id="ldTL"></div>
+        <div class="ld-corner ld-corner--tr" id="ldTR"></div>
+        <div class="ld-corner ld-corner--bl" id="ldBL"></div>
+        <div class="ld-corner ld-corner--br" id="ldBR"></div>
+
+        <!-- Central emblem stage -->
+        <div class="ld-stage" id="ldStage">
+
+            <!-- Circular precision badge -->
+            <div class="ld-badge" id="ldBadge">
+                <svg class="ld-badge-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer ring -->
+                    <circle cx="100" cy="100" r="96" stroke="white" stroke-width="0.4" opacity="0.25" id="ring1"/>
+                    <!-- Main ring -->
+                    <circle cx="100" cy="100" r="88" stroke="white" stroke-width="0.8" opacity="0.7" id="ring2"
+                        stroke-dasharray="553" stroke-dashoffset="553"/>
+                    <!-- Inner ring -->
+                    <circle cx="100" cy="100" r="76" stroke="white" stroke-width="0.3" opacity="0.2" id="ring3"/>
+
+                    <!-- 12 precision tick marks -->
+                    <g opacity="0.5" stroke="white" stroke-width="0.6">
+                        <line x1="100" y1="4"  x2="100" y2="14"/>  <!-- 12 -->
+                        <line x1="148" y1="16" x2="142" y2="24"/>  <!-- 1  -->
+                        <line x1="184" y1="52" x2="176" y2="58"/>  <!-- 2  -->
+                        <line x1="196" y1="100" x2="186" y2="100"/> <!-- 3  -->
+                        <line x1="184" y1="148" x2="176" y2="142"/> <!-- 4  -->
+                        <line x1="148" y1="184" x2="142" y2="176"/> <!-- 5  -->
+                        <line x1="100" y1="196" x2="100" y2="186"/> <!-- 6  -->
+                        <line x1="52"  y1="184" x2="58"  y2="176"/> <!-- 7  -->
+                        <line x1="16"  y1="148" x2="24"  y2="142"/> <!-- 8  -->
+                        <line x1="4"   y1="100" x2="14"  y2="100"/> <!-- 9  -->
+                        <line x1="16"  y1="52"  x2="24"  y2="58"/>  <!-- 10 -->
+                        <line x1="52"  y1="16"  x2="58"  y2="24"/>  <!-- 11 -->
+                    </g>
+
+                    <!-- Cardinal long ticks -->
+                    <g stroke="white" stroke-width="1" opacity="0.8">
+                        <line x1="100" y1="4"  x2="100" y2="16"/>   <!-- 12 long -->
+                        <line x1="196" y1="100" x2="184" y2="100"/> <!-- 3 long  -->
+                        <line x1="100" y1="196" x2="100" y2="184"/> <!-- 6 long  -->
+                        <line x1="4"   y1="100" x2="16"  y2="100"/>  <!-- 9 long  -->
+                    </g>
+
+                    <!-- Curved ASTON MARTIN text around top -->
+                    <path id="topArc" d="M 18,100 A 82,82 0 1,1 182,100" fill="none"/>
+                    <text font-family="Cinzel,serif" font-size="9" fill="white" letter-spacing="6" opacity="0.65" id="arcText">
+                        <textPath href="#topArc" startOffset="10%">ASTON  MARTIN</textPath>
+                    </text>
+
+                    <!-- Curved EST text around bottom -->
+                    <path id="botArc" d="M 22,100 A 78,78 0 0,0 178,100" fill="none"/>
+                    <text font-family="Cinzel,serif" font-size="7" fill="white" letter-spacing="8" opacity="0.45" id="arcTextBot">
+                        <textPath href="#botArc" startOffset="18%">EST  ·  1913</textPath>
+                    </text>
+
+                    <!-- Decorative horizontal line across center -->
+                    <line x1="30" y1="112" x2="170" y2="112" stroke="white" stroke-width="0.3" opacity="0.2"/>
+
+                    <!-- Center AM -->
+                    <text x="100" y="105" text-anchor="middle" font-family="Cinzel,serif"
+                          font-size="32" fill="white" letter-spacing="6" font-weight="700" opacity="0" id="amText">AM</text>
+                </svg>
+            </div>
+
+            <!-- Counter -->
+            <div class="ld-counter" id="ldCounter">000</div>
+
+            <!-- Shimmer wordmark beneath badge -->
+            <div class="ld-wordmark" id="ldWordmark">
+                <div class="ld-wm-text" id="ldWmText">ASTON MARTIN</div>
+                <div class="ld-wm-shimmer" id="ldShimmer"></div>
+            </div>
+
+            <!-- Tagline -->
+            <p class="ld-tagline" id="ldTagline">Power &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Soul</p>
+        </div>
+
+        <!-- Flash overlay -->
+        <div class="ld-flash" id="ldFlash"></div>
+
+        <!-- Curtain top/bottom split -->
+        <div class="ld-curtain-t" id="ldCurtainT"></div>
+        <div class="ld-curtain-b" id="ldCurtainB"></div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- NAVIGATION -->
+    <header class="nav-header" id="navHeader">
+        <nav class="nav-inner">
+            <div class="nav-logo">
+                <!-- Premium Circular Badge -->
+                <svg class="nav-badge-svg" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Outer ring -->
+                    <circle cx="45" cy="45" r="43" stroke="white" stroke-width="0.3" opacity="0.2"/>
+                    <!-- Main ring -->
+                    <circle cx="45" cy="45" r="40" stroke="white" stroke-width="0.7" opacity="0.75"/>
+                    <!-- Inner ring -->
+                    <circle cx="45" cy="45" r="34" stroke="white" stroke-width="0.3" opacity="0.2"/>
+                    <!-- 12 tick marks -->
+                    <g stroke="white" stroke-width="0.5" opacity="0.4">
+                        <line x1="45" y1="2" x2="45" y2="9"/>
+                        <line x1="67.3" y1="8" x2="64.1" y2="13.5"/>
+                        <line x1="82" y1="22.7" x2="76.5" y2="25.9"/>
+                        <line x1="88" y1="45" x2="81" y2="45"/>
+                        <line x1="82" y1="67.3" x2="76.5" y2="64.1"/>
+                        <line x1="67.3" y1="82" x2="64.1" y2="76.5"/>
+                        <line x1="45" y1="88" x2="45" y2="81"/>
+                        <line x1="22.7" y1="82" x2="25.9" y2="76.5"/>
+                        <line x1="8" y1="67.3" x2="13.5" y2="64.1"/>
+                        <line x1="2" y1="45" x2="9" y2="45"/>
+                        <line x1="8" y1="22.7" x2="13.5" y2="25.9"/>
+                        <line x1="22.7" y1="8" x2="25.9" y2="13.5"/>
+                    </g>
+                    <!-- Cardinal long ticks -->
+                    <g stroke="white" stroke-width="1" opacity="0.8">
+                        <line x1="45" y1="2" x2="45" y2="11"/>
+                        <line x1="88" y1="45" x2="79" y2="45"/>
+                        <line x1="45" y1="88" x2="45" y2="79"/>
+                        <line x1="2" y1="45" x2="11" y2="45"/>
+                    </g>
+                    <!-- Curved text top: ASTON MARTIN -->
+                    <path id="navTopArc" d="M 8,45 A 37,37 0 1,1 82,45" fill="none"/>
+                    <text font-family="Cinzel,serif" font-size="5.5" fill="white" letter-spacing="3.5" opacity="0.7">
+                        <textPath href="#navTopArc" startOffset="8%">ASTON  MARTIN</textPath>
+                    </text>
+                    <!-- Curved text bottom: EST 1913 -->
+                    <path id="navBotArc" d="M 11,45 A 34,34 0 0,0 79,45" fill="none"/>
+                    <text font-family="Cinzel,serif" font-size="4.5" fill="white" letter-spacing="3" opacity="0.4">
+                        <textPath href="#navBotArc" startOffset="18%">EST  ·  1913</textPath>
+                    </text>
+                    <!-- Center AM -->
+                    <text x="45" y="50" text-anchor="middle" font-family="Cinzel,serif"
+                          font-size="14" fill="white" letter-spacing="3" font-weight="700">AM</text>
+                    <!-- Thin horizontal accent -->
+                    <line x1="28" y1="54" x2="62" y2="54" stroke="white" stroke-width="0.4" opacity="0.3"/>
+                </svg>
+                <!-- Brand text labels alongside badge -->
+                <div class="nav-logo-labels">
+                    <span class="nav-logo-title">ASTON MARTIN</span>
+                    <span class="nav-logo-sub">Est. 1913</span>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#world">Our World</a></li>
+                <li><a href="#models">Models</a></li>
+                <li><a href="#vantage" class="nav-highlight">Vantage</a></li>
+                <li><a href="#owners">Owners</a></li>
+                <li><a href="#f1">F1 Team</a></li>
+                <li><a href="#preowned">Preowned</a></li>
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#corporate">Corporate</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#careers">Careers</a></li>
+            </ul>
+            <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose">✕</button>
+        <ul class="mobile-links">
+            <li><a href="#world">Our World</a></li>
+            <li><a href="#models">Models</a></li>
+            <li><a href="#owners">Owners</a></li>
+            <li><a href="#f1">F1 Team</a></li>
+            <li><a href="#preowned">Preowned</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#corporate">Corporate</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#careers">Careers</a></li>
+        </ul>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <img src="img1.png" alt="Aston Martin Vanquish" class="hero-img">
+                <div class="hero-vignette"></div>
+            </div>
+            <div class="hero-content">
+                <p class="hero-kicker">Handcrafted in Gaydon, England</p>
+                <h1 class="hero-headline">
+                    <span class="line">POWER.</span>
+                    <span class="line">BEAUTY.</span>
+                    <span class="line">SOUL.</span>
+                </h1>
+                <p class="hero-sub">The next chapter of British hyper-luxury.</p>
+                <div class="hero-cta-wrap">
+                    <a href="#models" class="btn-ghost">Explore the Models</a>
+                    <a href="#world" class="btn-text">Our Story →</a>
+                </div>
+            </div>
+            <div class="hero-scroll-hint">
+                <div class="scroll-wheel"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- TICKER -->
+        <div class="ticker-wrap">
+            <div class="ticker-track">
+                <span>Power</span><span class="ticker-dot">·</span>
+                <span>Beauty</span><span class="ticker-dot">·</span>
+                <span>Soul</span><span class="ticker-dot">·</span>
+                <span>Vantage</span><span class="ticker-dot">·</span>
+                <span>DB12</span><span class="ticker-dot">·</span>
+                <span>DBS</span><span class="ticker-dot">·</span>
+                <span>Vanquish</span><span class="ticker-dot">·</span>
+                <span>Valkyrie</span><span class="ticker-dot">·</span>
+                <span>Valhalla</span><span class="ticker-dot">·</span>
+                <span>AMR24</span><span class="ticker-dot">·</span>
+                <span>Power</span><span class="ticker-dot">·</span>
+                <span>Beauty</span><span class="ticker-dot">·</span>
+                <span>Soul</span><span class="ticker-dot">·</span>
+                <span>Vantage</span><span class="ticker-dot">·</span>
+                <span>DB12</span><span class="ticker-dot">·</span>
+                <span>DBS</span><span class="ticker-dot">·</span>
+                <span>Vanquish</span><span class="ticker-dot">·</span>
+                <span>Valkyrie</span><span class="ticker-dot">·</span>
+                <span>Valhalla</span><span class="ticker-dot">·</span>
+                <span>AMR24</span><span class="ticker-dot">·</span>
+            </div>
+        </div>
+
+        <!-- OUR WORLD -->
+        <section class="world" id="world">
+            <div class="world-layout">
+                <div class="world-text">
+                    <p class="section-eyebrow js-reveal">Since 1913</p>
+                    <h2 class="section-h2 js-reveal js-delay-1">A Legacy<br>Forged in Fire</h2>
+                    <p class="section-body js-reveal js-delay-2">Over a century of relentless pursuit. Every Aston Martin is born from an obsession with performance, an uncompromising vision of beauty, and a devotion to handcrafted British excellence that no machine can replicate.</p>
+                    <a href="#models" class="btn-ghost js-reveal js-delay-3" style="margin-top:2.5rem;display:inline-block">Discover Our Story</a>
+                </div>
+                <div class="world-image js-reveal-scale">
+                    <img src="img2.png" alt="Aston Martin Valhalla on a rainy night">
+                    <div class="world-image-label">Valhalla — 2025</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS STRIP -->
+        <div class="stats-strip">
+            <div class="stat-item js-reveal">
+                <span class="stat-num" data-target="110">0</span><span class="stat-unit">+</span>
+                <p>Years of Heritage</p>
+            </div>
+            <div class="stat-item js-reveal js-delay-1">
+                <span class="stat-num" data-target="7">0</span><span class="stat-unit"></span>
+                <p>Current Models</p>
+            </div>
+            <div class="stat-item js-reveal js-delay-2">
+                <span class="stat-num" data-target="759">0</span><span class="stat-unit">bhp</span>
+                <p>Peak Power (Valkyrie)</p>
+            </div>
+            <div class="stat-item js-reveal js-delay-3">
+                <span class="stat-num" data-target="1">0</span><span class="stat-unit">s</span>
+                <p>Away from Perfect</p>
+            </div>
+        </div>
+
+        <!-- MODELS GRID -->
+        <section class="models" id="models">
+            <div class="models-header">
+                <p class="section-eyebrow js-reveal">The Collection</p>
+                <h2 class="section-h2 js-reveal js-delay-1">Choose Your Icon</h2>
+            </div>
+            <div class="models-grid">
+                <div class="model-card js-reveal">
+                    <div class="model-card-img">
+                        <img src="img1.png" alt="Aston Martin Vanquish">
+                        <div class="model-card-overlay"><a href="#" class="model-card-cta">Configure →</a></div>
+                    </div>
+                    <div class="model-card-info">
+                        <h3>Vanquish</h3>
+                        <p>The pinnacle grand tourer.</p>
+                        <span class="model-badge">New</span>
+                    </div>
+                </div>
+                <div class="model-card js-reveal js-delay-1">
+                    <div class="model-card-img">
+                        <img src="img2.png" alt="Aston Martin Valhalla">
+                        <div class="model-card-overlay"><a href="#" class="model-card-cta">Configure →</a></div>
+                    </div>
+                    <div class="model-card-info">
+                        <h3>Valhalla</h3>
+                        <p>Hyper-performance, hybridized.</p>
+                        <span class="model-badge model-badge--limited">Limited</span>
+                    </div>
+                </div>
+                <div class="model-card js-reveal js-delay-2">
+                    <div class="model-card-img">
+                        <img src="model_vantage.png" alt="Aston Martin Vantage">
+                        <div class="model-card-overlay"><a href="#" class="model-card-cta">Configure →</a></div>
+                    </div>
+                    <div class="model-card-info">
+                        <h3>Vantage</h3>
+                        <p>Pure sports car DNA.</p>
+                    </div>
+                </div>
+                <div class="model-card js-reveal js-delay-1">
+                    <div class="model-card-img">
+                        <img src="img3.png" alt="Aston Martin DBS">
+                        <div class="model-card-overlay"><a href="#" class="model-card-cta">Configure →</a></div>
+                    </div>
+                    <div class="model-card-info">
+                        <h3>DBS</h3>
+                        <p>Ultra-luxury grand tourer.</p>
+                    </div>
+                </div>
+                <div class="model-card model-card--wide js-reveal js-delay-2">
+                    <div class="model-card-img">
+                        <img src="img4.png" alt="Aston Martin Valkyrie">
+                        <div class="model-card-overlay"><a href="#" class="model-card-cta">Configure →</a></div>
+                    </div>
+                    <div class="model-card-info">
+                        <h3>Valkyrie</h3>
+                        <p>The ultimate hypercar. Road. Track. Legend.</p>
+                        <span class="model-badge model-badge--limited">Sold Out</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VANTAGE SPOTLIGHT — powered by vantage-data.json (Sync & Serve) -->
+        <section class="vantage-spotlight" id="vantage">
+
+            <!-- Section label -->
+            <div class="vs-label-wrap">
+                <span class="vs-data-badge" id="vsSyncBadge">
+                    <span class="vs-badge-dot"></span>
+                    <span id="vsBadgeText">LIVE DATA</span>
+                </span>
+            </div>
+
+            <!-- Left: copy + specs grid -->
+            <div class="vs-left">
+                <p class="section-eyebrow js-reveal">The Benchmark</p>
+                <h2 class="vs-headline js-reveal js-delay-1">
+                    Aston Martin<br>
+                    <span class="vs-headline-model" id="vsModelName">Vantage</span>
+                </h2>
+                <p class="section-body js-reveal js-delay-2" id="vsTagline">Loading…</p>
+
+                <!-- Specs grid — populated by JS -->
+                <div class="vs-specs" id="vsSpecs">
+                    <div class="vs-spec-item skeleton" data-key="topSpeed">
+                        <span class="vs-spec-value">—</span>
+                        <span class="vs-spec-unit"></span>
+                        <span class="vs-spec-label">Top Speed</span>
+                    </div>
+                    <div class="vs-spec-item skeleton" data-key="zeroToSixty">
+                        <span class="vs-spec-value">—</span>
+                        <span class="vs-spec-unit"></span>
+                        <span class="vs-spec-label">0–60 mph</span>
+                    </div>
+                    <div class="vs-spec-item skeleton" data-key="power">
+                        <span class="vs-spec-value">—</span>
+                        <span class="vs-spec-unit"></span>
+                        <span class="vs-spec-label">Peak Power</span>
+                    </div>
+                    <div class="vs-spec-item skeleton" data-key="torque">
+                        <span class="vs-spec-value">—</span>
+                        <span class="vs-spec-unit"></span>
+                        <span class="vs-spec-label">Max Torque</span>
+                    </div>
+                    <div class="vs-spec-item vs-spec-engine skeleton" data-key="engine">
+                        <span class="vs-spec-value">—</span>
+                        <span class="vs-spec-unit"></span>
+                        <span class="vs-spec-label">Engine</span>
+                    </div>
+                </div>
+
+                <!-- Magnetic Build Yours button -->
+                <div class="vs-cta-wrap js-reveal js-delay-3">
+                    <button class="btn-configurator" id="btnBuildYours" aria-label="Open Aston Martin 3D Configurator">
+                        <span class="btn-cfg-inner">
+                            <svg class="btn-cfg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                            Build Yours
+                            <svg class="btn-cfg-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M5 12h14M13 6l6 6-6 6"/>
+                            </svg>
+                        </span>
+                        <div class="btn-cfg-ripple"></div>
+                    </button>
+                    <p class="vs-cta-note">Opens official Aston Martin 3D Configurator</p>
+                </div>
+            </div>
+
+            <!-- Right: image carousel driven by JSON -->
+            <div class="vs-right">
+                <div class="vs-gallery" id="vsGallery">
+                    <div class="vs-gallery-main">
+                        <img id="vsMainImg" src="model_vantage.png" alt="Aston Martin Vantage">
+                        <div class="vs-gallery-sheen"></div>
+                        <div class="vs-year-tag" id="vsYear">2025</div>
+                    </div>
+                    <div class="vs-gallery-thumbs" id="vsGalleryThumbs"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GSAP exit overlay — fires when "Build Yours" is clicked -->
+        <div class="configurator-exit" id="cfgExit">
+            <div class="cfg-exit-logo">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="88" stroke="white" stroke-width="0.8" opacity="0.7"
+                            stroke-dasharray="553" stroke-dashoffset="553" id="cfgRing"/>
+                    <text x="100" y="113" text-anchor="middle" font-family="Cinzel,serif"
+                          font-size="32" fill="white" letter-spacing="6" font-weight="700">AM</text>
+                </svg>
+            </div>
+            <p class="cfg-exit-text">Launching Configurator…</p>
+        </div>
+
+        <!-- Q DIVISION / CRAFT -->
+        <section class="craft" id="experiences">
+            <div class="craft-inner">
+                <div class="craft-left">
+                    <p class="section-eyebrow js-reveal">Q by Aston Martin</p>
+                    <h2 class="section-h2 js-reveal js-delay-1">Built to<br>Your Vision</h2>
+                    <p class="section-body js-reveal js-delay-2">Every single detail — from the thread of the leather to the exact hue of the exterior — is yours to define. Q by Aston Martin transforms specification into pure expression.</p>
+                    <ul class="craft-features">
+                        <li class="js-reveal js-delay-2"><span>01</span> Bespoke Color Matching</li>
+                        <li class="js-reveal js-delay-3"><span>02</span> Hand-Stitched Interiors</li>
+                        <li class="js-reveal js-delay-4"><span>03</span> Carbon Aero Packages</li>
+                        <li class="js-reveal js-delay-5"><span>04</span> Personalized Badging</li>
+                    </ul>
+                    <a href="#" class="btn-ghost js-reveal js-delay-5" style="display:inline-block">Explore Q Division</a>
+                </div>
+                <div class="craft-right">
+                    <div class="craft-img-stack">
+                        <div class="craft-img craft-img--back js-reveal-scale">
+                            <img src="img3.png" alt="Carbon fiber detail">
+                        </div>
+                        <div class="craft-img craft-img--front js-reveal-scale js-delay-2">
+                            <img src="model_vantage.png" alt="Aston Martin Vantage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- F1 TEAM -->
+        <section class="f1-banner" id="f1">
+            <div class="f1-bg">
+                <img src="f1_banner.png" alt="Aston Martin AMR24 F1 Car" class="f1-img" id="f1Img">
+                <div class="f1-vignette"></div>
+            </div>
+            <div class="f1-content">
+                <p class="section-eyebrow js-reveal" style="color:var(--am-green)">Formula One™</p>
+                <h2 class="f1-headline js-reveal js-delay-1">Racing at the<br>Limit of Physics</h2>
+                <p class="f1-sub js-reveal js-delay-2">The AMR24. 1,000 corners a season. One relentless mission — victory.</p>
+                <a href="#" class="btn-ghost btn-ghost--green js-reveal js-delay-3">Enter The Pit Lane</a>
+            </div>
+            <div class="f1-data-strip">
+                <div class="f1-data-item"><span>1,050+</span><p>Horsepower</p></div>
+                <div class="f1-data-item"><span>340 km/h</span><p>Top Speed</p></div>
+                <div class="f1-data-item"><span>AMR24</span><p>2025 Specification</p></div>
+                <div class="f1-data-item"><span>Green Racing</span><p>Aston Martin F1</p></div>
+            </div>
+        </section>
+
+        <!-- PREOWNED -->
+        <section class="preowned" id="preowned">
+            <div class="preowned-inner">
+                <div class="preowned-text">
+                    <p class="section-eyebrow js-reveal">Certified Pre-Owned</p>
+                    <h2 class="section-h2 js-reveal js-delay-1">Timeless<br>Beauty, Assured</h2>
+                    <p class="section-body js-reveal js-delay-2">Every Certified Pre-Owned Aston Martin undergoes a 150-point inspection by factory-trained engineers. Your assurance of perfection.</p>
+                    <a href="#" class="btn-ghost js-reveal js-delay-3" style="display:inline-block;margin-top:2rem">Browse Preowned</a>
+                </div>
+                <div class="preowned-image js-reveal-scale">
+                    <img src="img5.png" alt="Preowned Aston Martin on track">
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer" id="about">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <ellipse cx="18" cy="18" rx="17" ry="17" stroke="white" stroke-width="0.7"/>
+                        <text x="18" y="22.5" text-anchor="middle" font-family="Cinzel,serif" font-size="8" fill="white" letter-spacing="1">AM</text>
+                    </svg>
+                    <p>Power. Beauty. Soul.</p>
+                </div>
+                <div class="footer-cols">
+                    <div class="footer-col">
+                        <h4>Models</h4>
+                        <a href="#">Vantage</a>
+                        <a href="#">DB12</a>
+                        <a href="#">DBS</a>
+                        <a href="#">Vanquish</a>
+                        <a href="#">Valhalla</a>
+                        <a href="#">Valkyrie</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Brand</h4>
+                        <a href="#">Our World</a>
+                        <a href="#">Heritage</a>
+                        <a href="#">F1 Team</a>
+                        <a href="#">Experience</a>
+                        <a href="#">Q Division</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Media</a>
+                        <a href="#">Investors</a>
+                        <a href="#">Corporate</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Owners</h4>
+                        <a href="#">Owner Portal</a>
+                        <a href="#">Service</a>
+                        <a href="#">Parts</a>
+                        <a href="#">Preowned</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aston Martin Lagonda Limited. Showcase concept — not affiliated with Aston Martin.</p>
+                <div class="footer-social">
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Twitter / X</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

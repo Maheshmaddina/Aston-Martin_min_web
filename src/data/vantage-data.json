@@ -1,0 +1,22 @@
+{
+  "model": "Vantage",
+  "tagline": "The most thrilling sports car in the world.",
+  "year": 2025,
+  "lastSynced": "2026-04-16T05:28:00.000Z",
+  "specs": {
+    "topSpeed":    { "value": "202",  "unit": "mph", "label": "Top Speed"   },
+    "zeroToSixty": { "value": "3.5",  "unit": "sec", "label": "0–60 mph"    },
+    "power":       { "value": "665",  "unit": "bhp", "label": "Peak Power"  },
+    "torque":      { "value": "800",  "unit": "Nm",  "label": "Max Torque"  },
+    "engine":      { "value": "4.0L Twin-Turbo V8", "unit": "", "label": "Engine" }
+  },
+  "images": [
+    { "url": "model_vantage.png", "alt": "Aston Martin Vantage – Front Three-Quarter" },
+    { "url": "img1.png",          "alt": "Aston Martin – Exterior Detail" },
+    { "url": "img3.png",          "alt": "Aston Martin – Track Shot" },
+    { "url": "interior.png",      "alt": "Aston Martin – Interior Cockpit" },
+    { "url": "profile.png",       "alt": "Aston Martin – Side Profile" }
+  ],
+  "configuratorUrl": "https://configurator.astonmartin.com/",
+  "isFallback": false
+}
